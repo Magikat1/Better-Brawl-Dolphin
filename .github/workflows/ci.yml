@@ -200,7 +200,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Purge .git for space reasons
-      run: rm -rf /home/runner/work/Project-Plus-Dolphin-src/.git && rm -rf /home/runner/actions-runner/cached/_diag/* && rm -rf /home/runner/actions-runner/_work/_temp/ && rm -rf /home/runner/actions-runner/_work/_tool/*
+      run: rm -rf /home/runner/work/Better-Brawl-Dolphin-src/.git && rm -rf /home/runner/actions-runner/cached/_diag/* && rm -rf /home/runner/actions-runner/_work/_temp/ && rm -rf /home/runner/actions-runner/_work/_tool/*
     - name: Setup Packages
       run: |
         flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && \
@@ -210,7 +210,7 @@ jobs:
       uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         manifest-path: Distribution/flatpak/flatpak.yml
-        bundle: Project-Plus-Dolphin-${{ env.DOLPHINVER }}.flatpak
+        bundle: Better-Brawl-Dolphin-${{ env.DOLPHINVER }}.flatpak
         
   build_appimage:
     name: AppImage Build
@@ -221,7 +221,7 @@ jobs:
     - name: Checkout Upstream Repo
       uses: actions/checkout@v4
       with:
-        repository: Project-Plus-Development-Team/Project-Plus-Dolphin
+        repository: Magikat1/Better-Brawl-Dolphin
         ref: master
         fetch-depth: 0
 
@@ -323,7 +323,7 @@ jobs:
         chmod a+x ./squashfs-root/runtime
         chmod a+x ./squashfs-root/AppRun-patched
         chmod a+x ./squashfs-root/update.sh
-        export UPD_INFO="gh-releases-zsync|Project-Plus-Development-Team|Project-Plus-Dolphin|continuous|Project+_Dolphin-x86_64.AppImage.zsync"
+        export UPD_INFO="gh-releases-zsync|Magikat1|Better-Brawl-Dolphin|continuous|Better-Brawl-Dolphin-x86_64.AppImage.zsync"
         /tmp/squashfs-root/AppRun --appdir="$GITHUB_WORKSPACE"/squashfs-root/ --plugin qt -d "$GITHUB_WORKSPACE"/squashfs-root/project-plus-dolphin.desktop -i "$GITHUB_WORKSPACE"/squashfs-root/project-plus-dolphin.svg \
         --exclude-library=libglib* --output appimage
         ls . | grep *.AppImage
@@ -339,7 +339,7 @@ jobs:
     - name: Upload Static Build
       uses: actions/upload-artifact@v4
       with:
-        name: Project-Plus-Dolphin-AppImage-${{ env.DOLPHINVER }}
+        name: Better-Brawl-Dolphin-AppImage-${{ env.DOLPHINVER }}
         path: uploads/
       env:
         DEFAULT_BRANCH: git-actions
